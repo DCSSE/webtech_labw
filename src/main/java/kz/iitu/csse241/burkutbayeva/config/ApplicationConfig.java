@@ -5,9 +5,11 @@ import jakarta.annotation.PreDestroy;
 import kz.iitu.csse241.burkutbayeva.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @PropertySource("${spring.profiles.active}")
+@EnableAspectJAutoProxy
 public class ApplicationConfig {
 
     @Autowired

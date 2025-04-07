@@ -13,6 +13,11 @@ public class BookService {
     private BookRepository bookRepository;
 
     public List<Book> getAllBooks() {
+        try {
+            Thread.sleep(300); // hold to check aop packet
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return bookRepository.findAll();
     }
 
