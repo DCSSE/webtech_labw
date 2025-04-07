@@ -14,11 +14,11 @@ public class Borrowing {
 
     @ManyToOne
     @JoinColumn(name = "reader_id", nullable = false)
-    private Reader reader;
+    private Reader readerId;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    private Book bookId;
 
     private LocalDate borrowDate;
     private LocalDate dueDate;

@@ -12,6 +12,5 @@ public class Lab1wApplication {
     public static void main(String[] args) {
         context = SpringApplication.run(Lab1wApplication.class, args);
         BookService bookService = context.getBean(BookService.class);
-        bookService.listBooks().forEach(b -> System.out.println(b.getInfo()));
     }
 }

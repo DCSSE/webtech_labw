@@ -3,18 +3,33 @@ package kz.iitu.csse241.burkutbayeva;
 import kz.iitu.csse241.burkutbayeva.database.Borrowing;
 import kz.iitu.csse241.burkutbayeva.repository.BorrowingRepository;
 import kz.iitu.csse241.burkutbayeva.service.BorrowingService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.List;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.when;
 
 public class BorrowingServiceTest {
-    private final BorrowingService borrowingService = new BorrowingService();
+
+    @Mock
+    private BorrowingRepository borrowingRepository;
+
+    @InjectMocks
+    private BorrowingService borrowingService;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     public void testListBorrowingsNotEmpty() {
-        List<Borrowing> borrowings = new BorrowingRepository().getAllBorrowings();
-        assertFalse(borrowings.isEmpty(), "Borrowing list should not be empty");
+        when(borrowingRepository.findAll()).thenReturn(Collections.singletonList(new Borrowing()));
+        assertFalse(borrowingService.getAllBorrowings().isEmpty(), "Borrowing list should not be empty");
     }
 }

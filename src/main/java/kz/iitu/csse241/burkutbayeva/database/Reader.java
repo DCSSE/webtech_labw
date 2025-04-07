@@ -12,13 +12,13 @@ public class Reader {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
-    private User user;
+    private Users user;
 
     private String firstName;
     private String lastName;
     private String status;
 
     public String getInfo() {
-        return readerId + ": " + fullName + " (" + status + ")";
+        return readerId + ": " + firstName + " " + lastName + " (" + status + ")";
     }
 }
